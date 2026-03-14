@@ -21,3 +21,5 @@ class SurveyModel {
         return $stmt->fetch() ?: null;
     }
 }
+
+?>

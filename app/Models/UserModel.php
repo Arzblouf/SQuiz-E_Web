@@ -22,7 +22,7 @@ class UserModel {
         return $stmt->execute([
             ':email' => $email,
             ':username' => $username,
-            ':passwordHash' => $hashedPassword
+            ':hashedPassword' => $hashedPassword
         ]);
 
         return true;
@@ -44,3 +44,5 @@ class UserModel {
         return null;
     }
 }
+
+?>

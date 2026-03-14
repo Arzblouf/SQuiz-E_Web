@@ -1,9 +1,9 @@
 <?php
 
-$url = trim($_GET['url'] ?? '', '/');
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 
-error_log("===REQUEST DEBUG===");
-error_log("Raw URL : " . $url);
+$url = trim($_GET['url'] ?? '', '/');
 
 if ($url === '') {
     include __DIR__ . '/../app/Views/auth/login.php';
@@ -15,10 +15,6 @@ $parts = explode('/', $url);
 $controllerName = $parts[0] ?? 'auth';
 $action = $parts[1] ?? 'index';
 $param = $parts[2] ?? null;
-
-error_log("Controller : " . $controllerName);
-error_log("Action : " . $action);
-error_log("===END DEBUG===");
 
 switch ($controllerName) {
     case 'auth':
@@ -49,3 +45,5 @@ switch ($controllerName) {
         include __DIR__ . '/../app/Views/auth/login.php';
         exit;
 }
+
+?>

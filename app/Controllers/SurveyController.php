@@ -25,9 +25,9 @@ class SurveyController {
         }
 
         $questions = QuestionModel::getBySurveyId($id);
-        foreach ($questions as &$question)
+        for ($i = 0; $i < count($questions); $i++)
         {
-            $question['answers'] = QuestionModel::getAnswer($question['id']);
+            $questions[$i]['answers'] = QuestionModel::getAnswer($questions[$i]['id']);
         }
 
         require __DIR__ . '/../Views/survey/show.php';
@@ -68,8 +68,10 @@ class SurveyController {
     {
         if (empty($_SESSION['user_id']))
         {
-            include __DIR__ . '/../Views/auth/login.php';
+            header('Location: auth/login');
             exit;
         }
     }
 }
+
+?>

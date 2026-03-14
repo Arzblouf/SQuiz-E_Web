@@ -18,7 +18,7 @@
             <?php foreach ($surveys as $survey): ?>
                 <tr>
                     <td><?= htmlspecialchars($survey['title']) ?></td>
-                    <td><?= htmlspecialchars($survey['themes']) ?></td>
+                    <td><?= htmlspecialchars($survey['name']) ?></td>
                     <td><?= htmlspecialchars($survey['nb_questions']) ?></td>
                     <td><a href="/survey/show/<?= $survey['id'] ?>">Take Survey</a></td>
                 </tr>

@@ -8,13 +8,10 @@
 </head>
 <body>
     <nav>
-        <a href="/survey/list">Surveys</a>
         <?php if (!empty($_SESSION['user_id'])): ?>
             <span>Hello, <?= htmlspecialchars($_SESSION['username'] ?? '') ?></span>
             <a href="/auth/logout">Logout</a>
-        <?php else: ?>
-            <a href="/auth/login">Login</a>
-            <a href="/auth/register">Register</a>
+            <a href="/survey/list">Surveys</a>
         <?php endif; ?>
     </nav>
 

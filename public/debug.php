@@ -53,3 +53,5 @@ try {
 }
 
 echo "<h2>All tests complete!</h2>";
+
+?>

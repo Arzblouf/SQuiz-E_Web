@@ -1,21 +1,22 @@
 <?php ob_start(); ?>
 
 <h1><?= htmlspecialchars($survey['title']) ?></h1>
-<p>Theme: <?= htmlspecialchars($survey['theme']) ?></p>
+<p>Theme: <?= htmlspecialchars($survey['name']) ?></p>
+<br>
+<br>
 
 <form method="POST" action="/survey/submit/<?= $survey['id'] ?>">
     <?php foreach ($questions as $index => $question): ?>
         <fieldset>
             <legend>
-                Question <?= $question['num_question'] ?>: <?= htmlspecialchars($question['caption']) ?>
+                Question <?= $index + 1 ?> (ID: <?= $question['id'] ?>): <?= htmlspecialchars($question['caption']) ?>
             </legend>
-
-        <?php foreach ($question['answers'] as $answer): ?>
-            <label>
-                <input type="radio" name="question_<?= $question['id'] ?>" value="<?= $answer['id'] ?>" required>
-                <?= htmlspecialchars($answer['content']) ?>
-            </label><br>
-        <?php endforeach; ?>
+            <?php foreach ($question['answers'] as $answer): ?>
+                <label>
+                    <input type="radio" name="question_<?= $question['id'] ?>" value="<?= $answer['id'] ?>" required>
+                    <?= htmlspecialchars($answer['content']) ?>
+                </label><br>
+            <?php endforeach; ?>
         </fieldset>
     <?php endforeach; ?>
 

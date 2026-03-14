@@ -20,7 +20,7 @@ class AuthController {
         if ($user) {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['username'] = $user['username'];
-            include __DIR__ . '/../Views/survey/list.php';
+            header('Location: /survey/list');
             exit;
         }
 
@@ -58,7 +58,7 @@ class AuthController {
         }
 
         if (UserModel::register($email, $username, $password)) {
-            include __DIR__ . '/../Views/auth/login.php';
+            header('Location: /login');
             exit;
         }
 
@@ -69,7 +69,7 @@ class AuthController {
     public function logout(): void
     {
         session_destroy();
-        include __DIR__ . '/../Views/auth/login.php';
+        header('Location: /login');
         exit;
     }
 }
