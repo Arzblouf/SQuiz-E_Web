@@ -3,7 +3,7 @@
 <h1>Available Surveys</h1>
 
 <?php if (empty($surveys)): ?>
-    <p>No surveys available at the moment.</p>
+    <p>Aucun questionnaire actuellement disponible (oopsie)</p>
 <?php else: ?>
     <table>
         <thead>
@@ -20,7 +20,7 @@
                     <td><?= htmlspecialchars($survey['title']) ?></td>
                     <td><?= htmlspecialchars($survey['name']) ?></td>
                     <td><?= htmlspecialchars($survey['nb_questions']) ?></td>
-                    <td><a href="/survey/show/<?= $survey['id'] ?>">Take Survey</a></td>
+                    <td><a href="/survey/show/<?= $survey['id'] ?>">Y répondre.</a></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>

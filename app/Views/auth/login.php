@@ -1,6 +1,6 @@
 <?php ob_start(); ?>
 
-<h1>Login</h1>
+<h1>Connexion</h1>
 
 <?php if(!empty($error)): ?>
     <p class="error"><?= htmlspecialchars($error) ?></p>
@@ -10,13 +10,13 @@
     <label>Email
         <input type="email" name="email" required>
     </label>
-    <label>Password
+    <label>Mot de passe
         <input type="password" name="password" required>
     </label>
     <button type="submit">Sign In</button>
 </form>
 
-<p>No account? <a href="/auth/register">Register here</a></p>
+<p>Pas de compte ?<a href="/auth/register">Inscrivez vous ici</a></p>
 
 <?php
 $content = ob_get_clean();

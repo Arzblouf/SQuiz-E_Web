@@ -9,9 +9,9 @@
 <body>
     <nav>
         <?php if (!empty($_SESSION['user_id'])): ?>
-            <span>Hello, <?= htmlspecialchars($_SESSION['username'] ?? '') ?></span>
-            <a href="/auth/logout">Logout</a>
-            <a href="/survey/list">Surveys</a>
+            <span>Bonjour, <?= htmlspecialchars($_SESSION['username'] ?? '') ?></span>
+            <a href="/auth/logout">Déconnexion</a>
+            <a href="/survey/list">Questionnaires</a>
         <?php endif; ?>
     </nav>
 

@@ -9,7 +9,7 @@
     <?php foreach ($questions as $index => $question): ?>
         <fieldset>
             <legend>
-                Question <?= $index + 1 ?> (ID: <?= $question['id'] ?>): <?= htmlspecialchars($question['caption']) ?>
+                Question <?= $index + 1 ?>: <?= htmlspecialchars($question['caption']) ?>
             </legend>
             <?php foreach ($question['answers'] as $answer): ?>
                 <label>
@@ -20,7 +20,7 @@
         </fieldset>
     <?php endforeach; ?>
 
-    <button type="submit">Submit Answers</button>
+    <button type="submit">Envoyer vos réponses.</button>
 </form>
 
 <?php

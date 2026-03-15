@@ -1,6 +1,6 @@
 <?php ob_start(); ?>
 
-<h1>Register</h1>
+<h1>Inscription</h1>
 
 <?php if(!empty($error)): ?>
     <p class="error"><?= htmlspecialchars($error) ?></p>
@@ -10,19 +10,19 @@
     <label>Email
         <input type="email" name="email" required>
     </label>
-    <label>Username
+    <label>Pseudonyme
         <input type="text" name="username" required>
     </label>
-    <label>Password (min 8 characters)
+    <label>Mot de passe (minimum 8 caractères)
         <input type="password" name="password" minlength="8" required>
     </label>
-    <label>Confirm Password
+    <label>Confirmez votre mot de passe
         <input type="password" name="confirm_password" required>
     </label>
-    <button type="submit">Create Account</button>
+    <button type="submit">Créer son compte</button>
 </form>
 
-<p>Already have an account? <a href="/auth/login">Login here</a></p>
+<p>Vous avez déjà un compte ? <a href="/auth/login">Login here</a></p>
 
 <?php
 $content = ob_get_clean();
