@@ -41,6 +41,16 @@ switch ($controllerName) {
         };
         break;
 
+    case 'issue':
+        require_once __DIR__ . '/../app/Controllers/ProblemeController.php';
+        $controller = new ProblemeController();
+
+        match ($action) {
+            'issue' => ($_SERVER['REQUEST_METHOD'] === 'POST') ? $controller->addIssue() : $controller->addIssueForm(),
+            default => $controller->addIssue(),
+        };
+        break;
+
     default:
         include __DIR__ . '/../app/Views/auth/login.php';
         exit;

@@ -8,7 +8,7 @@
     <p>Pourcentage: <?= round(($score / $maxScore) * 100, 2) ?>%</p>
 <?php endif; ?>
 
-<a href="/survey/list">Back to Surveys</a>
+<a href="/survey/list">Retour aux questionnaires.</a>
 
 <?php
 $content = ob_get_clean();

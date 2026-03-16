@@ -13,7 +13,7 @@
     <label>Mot de passe
         <input type="password" name="password" required>
     </label>
-    <button type="submit">Sign In</button>
+    <button type="submit">Connexion.</button>
 </form>
 
 <p>Pas de compte ?<a href="/auth/register">Inscrivez vous ici</a></p>

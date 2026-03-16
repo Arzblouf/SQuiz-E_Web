@@ -8,7 +8,7 @@ class UserModel {
     {
         $db = Database::getConnection();
         
-        $stmt = $db->prepare('SELECT id FROM users WHERE email = :email');
+        $stmt = $db->prepare('SELECT id FROM users WHERE email = :email;');
         $stmt->execute([':email' => $email]);
 
         if ($stmt->fetch()) {
@@ -17,7 +17,7 @@ class UserModel {
 
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-        $stmt = $db->prepare('INSERT INTO users (email, username, passwordHash) VALUES (:email, :username, :hashedPassword)');
+        $stmt = $db->prepare('INSERT INTO users (email, username, passwordHash) VALUES (:email, :username, :hashedPassword);');
 
         return $stmt->execute([
             ':email' => $email,
@@ -32,7 +32,7 @@ class UserModel {
     {
         $db = Database::getConnection();
         
-        $stmt = $db->prepare('SELECT id, email, username, passwordHash FROM users WHERE email = :email');
+        $stmt = $db->prepare('SELECT id, email, username, passwordHash FROM users WHERE email = :email;');
         $stmt->execute([':email' => $email]);
         $user = $stmt->fetch();
 
@@ -42,6 +42,17 @@ class UserModel {
         }
 
         return null;
+    }
+
+    public static function getIdByMail(string $email) : int
+    {
+        $db = Database::getConnection();
+
+        $stmt = $db->prepare('SELECT id FROM users WHERE email = :email;');
+        $stmt->execute([':email' => $email]);
+        $userID = $stmt->fetch();
+
+        return $userID;
     }
 }
 

@@ -1,6 +1,6 @@
 <?php ob_start(); ?>
 
-<h1>Available Surveys</h1>
+<h1>Questionnaire disponibles :</h1>
 
 <?php if (empty($surveys)): ?>
     <p>Aucun questionnaire actuellement disponible (oopsie)</p>
@@ -8,10 +8,10 @@
     <table>
         <thead>
             <tr>
-                <th>Title</th>
-                <th>Themes</th>
+                <th>Titre</th>
+                <th>Thème</th>
                 <th>Questions</th>
-                <th>Action</th>
+                <th>Y répondre ?</th>
             </tr>
         </thead>
         <tbody>

@@ -22,7 +22,7 @@
     <button type="submit">Créer son compte</button>
 </form>
 
-<p>Vous avez déjà un compte ? <a href="/auth/login">Login here</a></p>
+<p>Vous avez déjà un compte ? <a href="/auth/login">Connectez vous ici</a></p>
 
 <?php
 $content = ob_get_clean();

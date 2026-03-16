@@ -12,6 +12,7 @@
             <span>Bonjour, <?= htmlspecialchars($_SESSION['username'] ?? '') ?></span>
             <a href="/auth/logout">Déconnexion</a>
             <a href="/survey/list">Questionnaires</a>
+            <a href="/issue/issue">Un problème à signaler ?</a>
         <?php endif; ?>
     </nav>
 
