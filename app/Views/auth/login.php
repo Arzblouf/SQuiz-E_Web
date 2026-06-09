@@ -1,4 +1,6 @@
-<?php ob_start(); ?>
+<?php ob_start(); 
+require_once __DIR__ . '/../../../config/database.php';
+?>
 
 <h1>Connexion</h1>
 
@@ -17,6 +19,7 @@
 </form>
 
 <p>Pas de compte ?<a href="/auth/register">Inscrivez vous ici</a></p>
+<p>base de données utlilisée : <?= DB_NAME ?></p>
 
 <?php
 $content = ob_get_clean();

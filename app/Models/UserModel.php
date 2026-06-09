@@ -44,7 +44,7 @@ class UserModel {
         return null;
     }
 
-    public static function getIdByMail(string $email) : int
+    public static function getIdByMail(string $email): int
     {
         $db = Database::getConnection();
 

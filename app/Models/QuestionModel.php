@@ -9,15 +9,7 @@ class QuestionModel {
         $db = Database::getConnection();
         $stmt = $db->prepare('SELECT DISTINCT question.id, question.caption, question_type.label, include.num_question FROM include JOIN question ON include.id_question = question.id JOIN question_type ON question.id_type = question_type.id WHERE include.id_survey = :surveyId ORDER BY include.num_question ASC');
         $stmt->execute([':surveyId' => $surveyId]);
-        $rows = $stmt->fetchAll();
-
-        $unique = [];
-        foreach ($rows as $row){
-            if (!isset($unique[$row['id']])){
-                $unique[$row['id']] = $row;
-            }
-        }
-        return array_values($unique);
+        return $stmt->fetchAll();
     }
 
     public static function getAnswer(int $questionId): array

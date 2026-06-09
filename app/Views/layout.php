@@ -13,11 +13,14 @@
             <a href="/auth/logout">Déconnexion</a>
             <a href="/survey/list">Questionnaires</a>
             <a href="/issue/issue">Un problème à signaler ?</a>
+            <a href="/history/history">Historique de vos consultations</a>
         <?php endif; ?>
     </nav>
 
     <main>
-        <?= $content ?>
+        <?= $content ?? '' ?>
     </main>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+    <script src="/js/app.js"></script>
 </body>
 </html>

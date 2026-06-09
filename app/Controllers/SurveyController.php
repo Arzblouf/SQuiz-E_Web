@@ -2,6 +2,7 @@
 
 require_once __DIR__ . '/../Models/SurveyModel.php';
 require_once __DIR__ . '/../Models/QuestionModel.php';
+require_once __DIR__ . '/../Models/HistoryModel.php';
 
 class SurveyController {
 
@@ -16,6 +17,10 @@ class SurveyController {
     {
         $this->requireAuth();
 
+        if (!empty($_SESSION['user_id'])){
+            HistoryModel::addEntry($_SESSION['user_id'], $id, new DateTime());
+        }
+
         $survey = SurveyModel::getById($id);
         if (!$survey)
         {
@@ -25,9 +30,9 @@ class SurveyController {
         }
 
         $questions = QuestionModel::getBySurveyId($id);
-        for ($i = 0; $i < count($questions); $i++)
+        foreach ($questions as $key => $question)
         {
-            $questions[$i]['answers'] = QuestionModel::getAnswer($questions[$i]['id']);
+            $questions[$key]['answers'] = QuestionModel::getAnswer($question['id']);
         }
 
         require __DIR__ . '/../Views/survey/show.php';
@@ -38,10 +43,18 @@ class SurveyController {
         $this->requireAuth();
 
         $survey = SurveyModel::getById($id);
+        if (!$survey) {
+            http_response_code(404);
+            echo 'Survey not found';
+            return;
+        }
+
         $questions = QuestionModel::getBySurveyId($id);
 
         $score = 0;
         $maxScore = 0;
+        $correct = 0;
+        $incorrect = 0;
 
         foreach ($questions as $question)
         {
@@ -57,6 +70,11 @@ class SurveyController {
                 if ((string)$answer['id'] === (string)$submitted && $answer['valid_answer'])
                 {
                     $score += $answer['weight'];
+                    $correct++;
+                }
+                elseif ((string)$answer['id'] === (string)$submitted && !$answer['valid_answer'])
+                {
+                    $incorrect++;
                 }
             }
         }
@@ -68,7 +86,7 @@ class SurveyController {
     {
         if (empty($_SESSION['user_id']))
         {
-            header('Location: auth/login');
+            include __DIR__ . '/../Views/auth/login.php';
             exit;
         }
     }

@@ -51,6 +51,16 @@ switch ($controllerName) {
         };
         break;
 
+    case 'history':
+        require_once __DIR__ . '/../app/Controllers/HistoryController.php';
+        $controller = new HistoryController();
+        
+        match ($action) {
+            'history' => $controller->viewHistory(),
+            default => $controller->viewHistory(),
+        };
+        break;
+
     default:
         include __DIR__ . '/../app/Views/auth/login.php';
         exit;
