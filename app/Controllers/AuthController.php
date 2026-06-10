@@ -38,10 +38,11 @@ class AuthController {
         require __DIR__ . '/../Views/auth/register.php';
     }
 
-    public function register(): void
+    public function register(): void //Modification pour ajouter le role de l'utilisateur lors de l'inscription
     {
         $email = trim($_POST['email'] ?? '');
         $username = trim($_POST['username'] ?? '');
+        $role = intval($_POST['role'] ?? 0);
         $password = $_POST['password'] ?? '';
         $confirmPassword = $_POST['confirm_password'] ?? '';
 
@@ -57,7 +58,7 @@ class AuthController {
             return;
         }
 
-        if (UserModel::register($email, $username, $password)) {
+        if (UserModel::register($email, $username, $role, $password)) {
             header('Location: /login');
             exit;
         }

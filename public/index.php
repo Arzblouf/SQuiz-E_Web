@@ -57,6 +57,7 @@ switch ($controllerName) {
         
         match ($action) {
             'history' => $controller->viewHistory(),
+            'userSurvey' => $controller->userSurveyCount(),
             default => $controller->viewHistory(),
         };
         break;

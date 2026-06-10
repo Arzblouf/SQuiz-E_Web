@@ -1,5 +1,6 @@
 <?php
 
+require_once __DIR__ . '/../Models/UserModel.php';
 require_once __DIR__ . '/../Models/SurveyModel.php';
 require_once __DIR__ . '/../Models/QuestionModel.php';
 require_once __DIR__ . '/../Models/HistoryModel.php';
@@ -8,8 +9,8 @@ class SurveyController {
 
     public function list(): void
     {
-        $this->requireAuth();
-        $surveys = SurveyModel::getAllPublished();
+        $this->requireAuth(); //Modification pour afficher uniquement les questionnaires au niveau inférieur ou égal à celui de l'utilisateur
+        $surveys = SurveyModel::getAllByUserLevel(UserModel::getLevelById($_SESSION['user_id']));
         require __DIR__ . '/../Views/survey/list.php';
     }
 

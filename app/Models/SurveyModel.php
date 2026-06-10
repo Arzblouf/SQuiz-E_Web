@@ -12,11 +12,21 @@ class SurveyModel {
         return $stmt->fetchAll();
     }
 
+    //Fonction pour récuperer les questionnaires de niveaux inférieur ou égal à celui de l'utilisateur
+    public static function getAllByUserLevel(int $userLevel): array
+    {
+        $db = Database::getConnection();
+        
+        $stmt = $db->prepare('SELECT survey.id, survey.title, survey.nb_questions, theme.name, survey.level FROM survey JOIN theme ON survey.id_theme = theme.id WHERE survey.publish = true AND survey.level <= :userLevel ORDER BY survey.id DESC');
+        $stmt->execute([':userLevel' => $userLevel]);
+        return $stmt->fetchAll();
+    }
+
     public static function getById(int $id): ?array
     {
         $db = Database::getConnection();
         
-        $stmt = $db->prepare('SELECT survey.id, survey.title, survey.nb_questions, theme.name FROM survey JOIN theme ON survey.id_theme = theme.id WHERE survey.id = :id');
+        $stmt = $db->prepare('SELECT survey.id, survey.title, survey.nb_questions, theme.name, survey.level FROM survey JOIN theme ON survey.id_theme = theme.id WHERE survey.id = :id');
         $stmt->execute([':id' => $id]);
         return $stmt->fetch() ?: null;
     }

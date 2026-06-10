@@ -1,20 +1,20 @@
 <?php ob_start(); ?>
 
-<h1> Quel est votre problème ? </h1>
+<h1> Vous avez une remarque ? </h1>
 
 <?php if (isset($error)): ?>
     <p style="color: red;"><?= htmlspecialchars($error) ?></p>
 <?php endif; ?>
 
 <form method="post" action="/issue/issue">
-    <label>Descrivez votre problème :
+    <label>Ecrivez votre remarque ici :
         <input type="text" name="description" required>
     </label>
-    <button type="submit">Signaler.</button>
+    <button type="submit">Remarquer.</button>
 </form>
 <br>
 <br>
-<p><a href="/survey/list">Si vous n'avez pas de problème, vous pouvez revenir aux questionnaires (émoji sourire)</a></p>
+<p><a href="/survey/list">Si vous n'avez rien à dire, vous pouvez revenir aux questionnaires (émoji sourire)</a></p>
 
 <?php
 $content = ob_get_clean();
